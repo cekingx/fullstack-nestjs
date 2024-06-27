@@ -1,5 +1,6 @@
-import { Controller, Get, Post, Render } from '@nestjs/common';
+import { Controller, Get, Post, Render, Res } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Response } from 'express';
 
 @Controller()
 export class AppController {
@@ -10,12 +11,10 @@ export class AppController {
   }
 
   @Post('clicked')
-  clicked() {
-    return `
-      <ul>
-        <li>Dirga</li>
-        <li>Yasa</li>
-      </ul>
-    `;
+  clicked(@Res() res: Response) {
+    return res.render('api/clicked', {
+      first_name: 'John',
+      last_name: 'Doe'
+    })
   }
 }
