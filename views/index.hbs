@@ -3,8 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <title>App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="htmx.min.js"></script>
   </head>
   <body>
-    {{ message }}
+    <h1 class="text-3xl font-bold underline">
+      {{ message }}
+    </h1>
+    <!-- have a button POST a click via AJAX -->
+    <button hx-post="/clicked" hx-swap="outerHTML">
+      Click Me
+    </button>
   </body>
 </html>
